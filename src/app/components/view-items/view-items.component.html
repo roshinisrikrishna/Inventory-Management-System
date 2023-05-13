@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar consists of Home and Add Item -->
+    <nav class = "navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                    <a class="nav-link" routerLink="/add">Add Item</a>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Table to display all the items -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">View Items</h1>
+                <!-- Add Item -->
+                <button class="btn btn-primary" routerLink="/add">Add Item</button>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">COST PER ITEM</th>
+                            <th scope="col">QUANTITY IN STOCK</th>
+                            <th scope="col">QUANTITY SOLD</th>
+                            <th scope="col">SALES</th>
+                            <th scope="col">STOCK DATE</th>
+                            <th scope="col">LAST SALE DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items">
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.cost_per_item}}</td>
+                            <td>{{item.quantity_in_stock}}</td>
+                            <td>{{item.quantity_sold}}</td>
+                            <td>{{item.sales}}</td>
+                            <td>{{item.stock_date}}</td>
+                            <td>{{item.last_sales_date}}</td>
+                            <td>
+                                <button class="btn btn-primary" routerLink="/update/{{item.id}}">Edit</button>
+                                <button class="btn btn-danger mx-2" (click)="deleteItem(item.id)">Delete</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+    </div>
+        </div>
+    </div>
+    
+            
+
+        
+
+    
+</body>
+</html>
