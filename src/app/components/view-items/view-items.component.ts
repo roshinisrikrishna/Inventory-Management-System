@@ -12,18 +12,22 @@ export class ViewItemsComponent {
 
   items: any | undefined;
 
-  constructor(private itemService : ItemsService){}
+  constructor(private itemService : ItemsService,private router:Router){}
   ngOnInit():void{
     this.itemService.getItems().subscribe(data=>{
       this.items = data;
       console.log(data);
     });
   }
+  editItem() {
+    this.router.navigate(['/update/' + this.items.id]);
+  }
+  
   deleteItem(id:number){
     this.itemService.deleteItemById(id).subscribe(data=>{
       console.log(data);
       this.ngOnInit();
-    })
+    });
   }
 
 }

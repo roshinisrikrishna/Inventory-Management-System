@@ -10,14 +10,15 @@ import { ItemsService } from 'src/app/items.service';
   styleUrls: ['./update-item.component.css']
 })
 export class UpdateItemComponent {
-  constructor(private itemService:ItemsService, private route:ActivatedRoute,private router:Router){}
-  user ?: any
-  data : any
+  constructor(private itemService :ItemsService, private route:ActivatedRoute,private router:Router){}
+  item ?: any
+  data : any;
+
+  id : number = 0;
   ngOnInit():void{
-    let id = this.route.snapshot.params['id'];
-    this.itemService.getItemById(id).subscribe(data=>{
-      this.user = data
-      console.log(this.user);
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log(this.id);
     });
   }
 
@@ -33,15 +34,18 @@ export class UpdateItemComponent {
 
   updateItem(){
     this.data = this.form.value
-    this.user.name = this.data.name
-    this.user.cost_per_item = this.data.cost_per_item
-    this.user.quantity_in_stock = this.data.quantity_in_stock
-    this.user.quantity_sold = this.data.quantity_sold
-    this.user.stock_date = this.data.stock_date
+    this.item.name = this.data.name
+    this.item.cost_per_item = this.data.cost_per_item
+    this.item.quantity_in_stock = this.data.quantity_in_stock
+    this.item.quantity_sold = this.data.quantity_sold
+    //this.item.stock_date = this.data.stock_date
     console.log(this.data)
-    this.itemService.updateItem(this.user,this.user?.id).subscribe(data=>{
+
+    this.itemService.updateItem(this.item?.id,this.item).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/']);
+
+      
     })
   }
 

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ADD ITEM</title>
 </head>
 <body>
     <!-- Navbar consists of Home and Add Item -->
     <nav class = "navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -24,16 +24,17 @@
             </div>
         </div>
     </nav>
-    <!-- form to add details of items -->
-    <div class="my-5">
+     <!-- form to add details of items -->
+     <div class="my-5">
         <div class="mx-auto w-25" style="max-width:100%;">
-            <h2 class="text-center mb-3">Update Item</h2>
+            <h2 class="text-center mb-3">Update Item  </h2>
             <form [formGroup]="form" (ngSubmit)="updateItem()">
                 <!-- name -->
                 <div class="row">
                     <div class="col-md-12 form-group mb-3">
+                        <h3>{{item?.name}}</h3>
                         <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" formControlName="name" name="name" class="form-control" [placeholder]="user?.name" required>
+                        <input id="name" type="text" formControlName="name" name="name" class="form-control" [placeholder]="item?.name" required>
 
                     </div>
 
@@ -43,7 +44,7 @@
                 <div class="row">
                     <div class="col-md-12 form-group mb-3">
                         <label for="cost_per_item" class="form-label">COST PER ITEM</label>
-                        <input id="cost_per_item" type="number" formControlName="cost_per_item" name="cost_per_item" class="form-control" [placeholder]="user?.cost_per_item" required>
+                        <input id="cost_per_item" type="number" formControlName="cost_per_item" name="cost_per_item" class="form-control" [placeholder]="item?.cost_per_item" required>
 
                     </div>
 
@@ -52,7 +53,7 @@
                 <div class="row">
                     <div class="col-md-12 form-group mb-3">
                         <label for="quantity_in_stock" class="form-label">QUANTITY IN STOCK</label>
-                        <input id="quantity_in_stock" type="number" formControlName="quantity_in_stock" name="quantity_in_stock" class="form-control" [placeholder]="user?.quantity_in_stock" required>
+                        <input id="quantity_in_stock" type="number" formControlName="quantity_in_stock" name="quantity_in_stock" class="form-control" [placeholder]="item?.quantity_in_stock" required>
 
                     </div>
 
@@ -61,14 +62,14 @@
                 <div class="row">
                     <div class="col-md-12 form-group mb-3">
                         <label for="quantity_sold" class="form-label">QUANTITY SOLD</label>
-                        <input id="quantity_sold" type="number" formControlName="quantity_sold" name="quantity_sold" class="form-control" [placeholder]="user?.quantity_sold" required>
+                        <input id="quantity_sold" type="number" formControlName="quantity_sold" name="quantity_sold" class="form-control" [placeholder]="item?.quantity_sold" required>
 
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col-md-12 form-group">
-                        <input [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">
+                        <input class="btn btn-primary w-100" type="submit" value="Submit">
 
                     </div>
 
